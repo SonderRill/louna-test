@@ -1,0 +1,36 @@
+{
+  "name": "louna-test",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "typia": "typia generate --input src --output src",
+    "build:full": "npm run build && npm run typia",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "migrate": "node-pg-migrate",
+    "migrate:up": "node-pg-migrate up",
+    "migrate:down": "node-pg-migrate down",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f",
+    "docker:ps": "docker compose ps"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "fastify": "^5.6.2",
+    "ioredis": "^5.8.2",
+    "pg": "^8.16.3",
+    "postgres": "^3.4.7",
+    "typia": "^10.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "dotenv": "^17.2.3",
+    "node-pg-migrate": "^7.6.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}
