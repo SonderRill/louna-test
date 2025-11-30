@@ -7,19 +7,22 @@
     "typia": "typia generate --input src --output src",
     "build:full": "npm run build && npm run typia",
     "start": "node dist/index.js",
-    "dev": "tsx watch src/index.ts",
+    "dev": "concurrently \"tsc --watch\" \"nodemon --watch dist dist/index.js\"",
+    "dev:tsx": "tsx watch src/index.ts",
     "migrate": "node-pg-migrate",
     "migrate:up": "node-pg-migrate up",
     "migrate:down": "node-pg-migrate down",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
     "docker:logs": "docker compose logs -f",
-    "docker:ps": "docker compose ps"
+    "docker:ps": "docker compose ps",
+    "prepare": "ts-patch install"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "fastify": "^5.6.2",
     "ioredis": "^5.8.2",
     "pg": "^8.16.3",
@@ -28,9 +31,11 @@
   },
   "devDependencies": {
     "@types/node": "^22",
-    "dotenv": "^17.2.3",
+    "concurrently": "^9.2.1",
     "node-pg-migrate": "^7.6.1",
+    "nodemon": "^3.1.11",
+    "ts-patch": "^3.3.0",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.3"
+    "typescript": "~5.9.3"
   }
 }

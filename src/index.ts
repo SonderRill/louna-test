@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import Fastify from 'fastify';
 import { skinportRoutes } from './routes/skinport.routes';
 import { purchaseRoutes } from './routes/purchase.routes';
@@ -32,7 +34,7 @@ const start = async () => {
   try {
     const port = Number(process.env.PORT) || 3000;
     const host = process.env.HOST || '0.0.0.0';
-    
+
     await fastify.listen({ port, host });
     console.log(`Server listening on ${host}:${port}`);
   } catch (err) {
